@@ -87,5 +87,17 @@ public class InicioControl implements Serializable {
         grafica.setLegendPosition("w");
         grafica.setShadow(false);
     }
-    
+    public void ganador(){
+        
+        if(getCandidatoA() > getCandidatoB() && getCandidatoA() > getCandidatoC() ){
+            System.out.println("El ganador con " + getCandidatoA() + "es: Juan Gonzalez");
+            //String ganador = "El ganador con " + getCandidatoA() + "es: Juan Gonzalez";
+        }else if(getCandidatoB() > getCandidatoA() && getCandidatoB() > getCandidatoC()){
+            System.out.println("El ganador con " + getCandidatoB()+ "es: Alberto Morales");
+            //String ganador2 = "El ganador con " + getCandidatoB()+ "es: Alberto Morales";
+        }else{
+            System.out.println("El ganador con " + getCandidatoC() + "es: Camilo Lopez");
+            
+        }
+    }
 }
