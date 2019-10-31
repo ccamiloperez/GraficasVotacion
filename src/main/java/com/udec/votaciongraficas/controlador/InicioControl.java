@@ -9,6 +9,8 @@ import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
+import org.primefaces.model.chart.PieChartModel;
+
 
 
 /**
@@ -22,12 +24,21 @@ public class InicioControl implements Serializable {
     private int candidatoB=0;
     private int candidatoC=0;
     
+    private PieChartModel grafica;
     
     public InicioControl() {
     }
     @PostConstruct
     public void init(){
-    
+        graficar();
+    }
+
+    public PieChartModel getGrafica() {
+        return grafica;
+    }
+
+    public void setGrafica(PieChartModel grafica) {
+        this.grafica = grafica;
     }
     
     public int getCandidatoA() {
@@ -66,4 +77,15 @@ public class InicioControl implements Serializable {
         setCandidatoC(getCandidatoC()+1);
 
     }
+    public void graficar() {
+        grafica = new PieChartModel();
+        grafica.set("Juan Gonzalez", getCandidatoA());
+        grafica.set("Alberto Morales", getCandidatoB());
+        grafica.set("Camilo Lopez", getCandidatoC());
+   
+        grafica.setTitle("Resultados de las votaciones");
+        grafica.setLegendPosition("w");
+        grafica.setShadow(false);
+    }
+    
 }

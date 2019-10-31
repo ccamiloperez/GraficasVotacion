@@ -19,11 +19,19 @@
                     <p:graphicImage value="resources/imagenes/candidato1.jpg" width="200px" height="200"/>
                     <p:graphicImage value="resources/imagenes/candidato2.jpg" width="200px" height="200"/>
                     <p:graphicImage value="resources/imagenes/candidato3.jpg" width="200px" height="200"/>
-                    <p:commandButton  id="cand1" value="Votar" actionListener="#{inicioControl.sumarVotosA()}" update="panel"/>
-                    <p:commandButton id="cand2" value="Votar" actionListener="#{inicioControl.sumarVotosB()}" update="panel"/>
-                    <p:commandButton id="cand3" value="Votar" actionListener="#{inicioControl.sumarVotosC()}" update="panel"/>
+                    <p:commandButton  id="cand1" value="Votar" actionListener="#{inicioControl.sumarVotosA()}">
+                        <p:ajax event="click" update="graf" listener="#{inicioControl.graficar()}"/>
+                    </p:commandButton>
+                    <p:commandButton id="cand2" value="Votar" actionListener="#{inicioControl.sumarVotosB()}" >
+                          <p:ajax event="click" update="graf" listener="#{inicioControl.graficar()}"/>
+                    </p:commandButton>
+                    <p:commandButton id="cand3" value="Votar" actionListener="#{inicioControl.sumarVotosC()}" >
+                          <p:ajax event="click" update="graf" listener="#{inicioControl.graficar()}"/>
+                    </p:commandButton>
                 </h:panelGrid>
                 <br></br><br></br>
+                <p:chart id="graf" type="pie" model="#{inicioControl.grafica}" style="width:400px; height:400px" />
+                <br />
             </h:form>
         </h:panelGroup>
     </h:body>
