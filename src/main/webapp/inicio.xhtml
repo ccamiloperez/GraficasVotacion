@@ -12,27 +12,29 @@
         </header>
         <h:panelGroup id="panel">
             <h:form>
-                <h:panelGrid columns="3" cellpadding="5" border="10" style="text-align: center; margin: auto;">
+                <h:panelGrid columns="3" cellpadding="5" border="1" style="text-align: center; float: left; margin-top: 60px; margin-left: 20px;">
                     <p:outputLabel value="Juan Gonzalez"/>
                     <p:outputLabel value="Alberto Morales"/>
                     <p:outputLabel value="Camilo Lopez"/>
                     <p:graphicImage value="resources/imagenes/candidato1.jpg" width="200px" height="200"/>
                     <p:graphicImage value="resources/imagenes/candidato2.jpg" width="200px" height="200"/>
                     <p:graphicImage value="resources/imagenes/candidato3.jpg" width="200px" height="200"/>
-                    <p:commandButton  id="cand1" value="Votar" actionListener="#{inicioControl.sumarVotosA()}">
-                        <p:ajax event="click" update="graf" listener="#{inicioControl.graficar()}"/>
+                    <p:commandButton  value="Votar" actionListener="#{inicioControl.graficarVotos()}" update="grafica">
+                        <p:ajax event="click" update="grafica" listener="#{inicioControl.sumarVotosA()}"/>
                     </p:commandButton>
-                    <p:commandButton id="cand2" value="Votar" actionListener="#{inicioControl.sumarVotosB()}" >
-                          <p:ajax event="click" update="graf" listener="#{inicioControl.graficar()}"/>
+                    <p:commandButton  value="Votar" actionListener="#{inicioControl.graficarVotos()}" update="grafica">
+                        <p:ajax event="click" update="grafica" listener="#{inicioControl.sumarVotosB()}"/>
                     </p:commandButton>
-                    <p:commandButton id="cand3" value="Votar" actionListener="#{inicioControl.sumarVotosC()}" >
-                          <p:ajax event="click" update="graf" listener="#{inicioControl.graficar()}"/>
+                    <p:commandButton value="Votar" actionListener="#{inicioControl.graficarVotos()}" update="grafica" >
+                        <p:ajax event="click" update="grafica" listener="#{inicioControl.sumarVotosC()}"/>
                     </p:commandButton>
                 </h:panelGrid>
                 <br></br><br></br>
-                <p:chart id="graf" type="pie" model="#{inicioControl.grafica}" style="width:400px; height:400px" />
-                <br />
-                <p:commandButton  value="Finalizar" action="resultado.xhtml"/> 
+                <h:panelGroup  layout="block" style="margin-left: 800px;">
+                <p:chart id="grafica" type="pie" model="#{inicioControl.grafica}" style="width:500px; height:400px" />
+                <br></br>
+                </h:panelGroup>
+                <p:commandButton  value="Finalizar" action="resultado" style="margin-left: 260px;"/>
             </h:form>
         </h:panelGroup>
     </h:body>

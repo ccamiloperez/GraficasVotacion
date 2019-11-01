@@ -13,7 +13,18 @@ and open the template in the editor.
     </head>
     <body>
         <h:form>
-            <h:outputText value="El ganador es: #{inicioControl.ganador()}"/>
+            <h:outputText value="El total de votos es: #{resultadoControl.totalVotos()}"/>
+            <br></br>
+            <h:outputText value="El ganador es: #{resultadoControl.ganador()}"/>
+            <br></br> <br></br>
+            <h:panelGrid columns="2" border="1" cellpadding="5">
+                <h:outputText value="Juan Gonzalez"/>
+                <h:outputText value=" #{resultadoControl.inicio.candidatoA}"/>
+                <h:outputText value="Alberto morales"/>
+                <h:outputText value=" #{resultadoControl.inicio.candidatoB}"/>
+                <h:outputText value="Camilo Lopez"/>
+                <h:outputText value=" #{resultadoControl.inicio.candidatoC}"/>
+            </h:panelGrid>
         </h:form>
     </body>
 </html>

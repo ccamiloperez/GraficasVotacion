@@ -14,23 +14,30 @@ import org.primefaces.model.chart.PieChartModel;
 
 
 /**
- *
- * @author ASUS
+ * Esta clase constituye el control de la pagina inicio
+ * @author Cristian Perez
+ * @author Julian Arias
  */
 @Named(value = "inicioControl")
 @SessionScoped
 public class InicioControl implements Serializable {
+    /**
+     * variables que almacenan el numero de votos por cada candidato
+     */
     private int candidatoA=0;
     private int candidatoB=0;
     private int candidatoC=0;
-    
+    /**
+     * grafico circular
+     */
     private PieChartModel grafica;
     
-    public InicioControl() {
-    }
+    /**
+     * Metodo postconstuct que inicia la grafica circular
+     */
     @PostConstruct
     public void init(){
-        graficar();
+        graficarVotos();
     }
 
     public PieChartModel getGrafica() {
@@ -64,40 +71,37 @@ public class InicioControl implements Serializable {
     public void setCandidatoC(int candidatoC) {
         this.candidatoC = candidatoC;
     }
-
-      
+    /**
+     * metodo que suma los votos del candidato A
+     */
     public void sumarVotosA(){
         setCandidatoA(getCandidatoA()+1);
     }
+    /**
+     * Metodo que suma los votos del candidato B
+     */
     public void sumarVotosB(){
         setCandidatoB(getCandidatoB()+1);
     
     }
+    /**
+     * Metodo que suma los votos del candidato C
+     */
     public void sumarVotosC(){
         setCandidatoC(getCandidatoC()+1);
 
     }
-    public void graficar() {
+    /**
+     * Metodo que crea la grafica de los votos parciales
+     */
+    public void graficarVotos() {
         grafica = new PieChartModel();
         grafica.set("Juan Gonzalez", getCandidatoA());
         grafica.set("Alberto Morales", getCandidatoB());
         grafica.set("Camilo Lopez", getCandidatoC());
    
-        grafica.setTitle("Resultados de las votaciones");
+        grafica.setTitle("Resultados Parciales");
         grafica.setLegendPosition("w");
         grafica.setShadow(false);
-    }
-    public void ganador(){
-        
-        if(getCandidatoA() > getCandidatoB() && getCandidatoA() > getCandidatoC() ){
-            System.out.println("El ganador con " + getCandidatoA() + "es: Juan Gonzalez");
-            //String ganador = "El ganador con " + getCandidatoA() + "es: Juan Gonzalez";
-        }else if(getCandidatoB() > getCandidatoA() && getCandidatoB() > getCandidatoC()){
-            System.out.println("El ganador con " + getCandidatoB()+ "es: Alberto Morales");
-            //String ganador2 = "El ganador con " + getCandidatoB()+ "es: Alberto Morales";
-        }else{
-            System.out.println("El ganador con " + getCandidatoC() + "es: Camilo Lopez");
-            
-        }
     }
 }
